@@ -244,10 +244,16 @@ function changeDataField(data) {
         }
 
     } else {
+        btnDataFieldTemperature.style.backgroundColor = '#D9D9D9';
+        btnDataFieldDewpoint.style.backgroundColor = '#D9D9D9';
+        btnDataFieldHumidity.style.backgroundColor = '#D9D9D9';
+        btnDataFieldWindSpeed.style.backgroundColor = '#D9D9D9';
+        btnDataFieldWindGust.style.backgroundColor = '#D9D9D9';
+        btnDataFieldCloudCover.style.backgroundColor = '#D9D9D9';
         btnDataFieldNone.style.backgroundColor = '#E2A348';
         titleCamada.innerHTML = 'Sem filtro';
         unitCamada.innerHTML = '';
-        barProgressLegendaMap.style.background = 'transparent';
+        barProgressLegendaMap.style.background = 'none';
         for (var i = 0; i < legenda.length; i++) {
             legenda[i].innerHTML = ''
         }
