@@ -261,8 +261,8 @@ function changeDataField(data) {
         }
       
     } else {
-        changeDataField('temperature');
+        
     }
 }
 
-changeDataField('none');
+changeDataField('notfilter');
