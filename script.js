@@ -261,4 +261,4 @@ function changeDataField(data) {
     }
 }
 
-changeDataField('humidity');
+changeDataField('none');
