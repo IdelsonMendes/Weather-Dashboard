@@ -929,11 +929,11 @@ circle {
         grid-template-columns: auto;
         grid-template-rows: auto;
         grid-template-areas:
-            "clima-diario umidade"
             "map-camadas map-camadas"
             "map map"
             "legenda-map legenda-map"
-            "condensacao condensacao"
+            "clima-diario umidade"
+            "clima-atual condensacao"
             "msg msg"
             "ar precipitacao"
             "clima-cidades uv"
@@ -943,10 +943,9 @@ circle {
             "velocidade-vento velocidade-vento"
     }
 
-
 }
 
-@media (max-width: 400px) {
+@media (max-width: 300px) {
 
     .dashboard .container {
         margin: auto 0.7rem;
@@ -956,18 +955,23 @@ circle {
         grid-template-columns: auto;
         grid-template-rows: auto;
         grid-template-areas:
-            "clima-diario umidade"
-            "map-camadas map-camadas"
-            "map map"
-            "legenda-map legenda-map"
-            "condensacao condensacao"
-            "msg msg"
-            "ar precipitacao"
-            "clima-cidades uv"
-            "possibilidade possibilidade"
-            "lua lua"
-            "sol direcao-vento"
-            "velocidade-vento velocidade-vento"
+            "map-camadas"
+            "map"
+            "legenda-map"
+            "clima-diario"
+            "umidade"
+            "clima-atual"
+            "condensacao"
+            "msg"
+            "ar"
+            "precipitacao"
+            "clima-cidades"
+            "uv"
+            "possibilidade"
+            "lua"
+            "sol"
+            "direcao-vento"
+            "velocidade-vento"
     }
 
 
