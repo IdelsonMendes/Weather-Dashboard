@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="profile">
+            <h1 class="title">Weather</h1>
+            <img src="https://images.pexels.com/photos/12013052/pexels-photo-12013052.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt="" class="picture">
+            <h4 class="user">Mr. Thess</h4>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><img src="./resourcers/Nav/dashboard-actived.png" alt="Ícone de Dashboard" class="icon"><a
+                        href="#">Dashboard</a></li>
+                <li><img src="./resourcers/Nav/noticias-desactived.png" alt="Ícone de Notícias" class="icon"><a
+                        href="#">Notícias</a></li>
+                <li><img src="./resourcers/Nav/rotina-desactived.png" alt="Ícone de Rotina" class="icon"><a
+                        href="#">Rotina</a></li>
+                <li><img src="./resourcers/Nav/configurações-desactived.png" alt="Íconed de Configurações"
+                        class="icon"><a href="#">Configurações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="dashboard">
+        <!-- Tela Dashboard -->
+        <div class="buttons">
+            <button id="btn-location" class="btn">Jacobina</button>
+            <div class="btn-change-mode">
+                <button class="btn">Diário</button>
+                <button class="btn">Semanal</button>
+            </div>
+        </div>
+        <main class="container">
+
+
+            <article id="article-map-camadas" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Camadas do Mapa</h1>
+                    <img src="./resourcers/dashboard/camada.png" alt="Ícone de Legenda" class="dashboard-icon">
+                </div>
+                <div class="circle-graph">
+                    <div class="info">
+                        <button class="btn-camada" id="btn-camada-temperature"
+                            onclick="changeDataField('temperature')">temperature</button>
+                        <button class="btn-camada" id="btn-camada-dewPoint"
+                            onclick="changeDataField('dewPoint')">dewPoint</button>
+                        <button class="btn-camada" id="btn-camada-humidity"
+                            onclick="changeDataField('humidity')">humidity</button>
+                        <button class="btn-camada" id="btn-camada-windSpeed"
+                            onclick="changeDataField('windSpeed')">windSpeed</button>
+                        <button class="btn-camada" id="btn-camada-windGust"
+                            onclick="changeDataField('windGust')">windGust</button>
+                        <button class="btn-camada" id="btn-camada-cloudCover"
+                            onclick="changeDataField('cloudCover')">cloudCover</button>
+                    </div>
+                </div>
+            </article>
+
+            <div id="map"></div>
+
+            <article id="article-map-legenda" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Clima</h1>
+                    <img src="./resourcers/dashboard/legenda.png" alt="Ícone de Legenda" class="dashboard-icon">
+                </div>
+                <div class="graph">
+                    <div class="info">
+                        <p>km/h</p>
+                    </div>
+                    <div class="bar">
+                        <div id="bar-legend-map" class="bar-progress"></div>
+                    </div>
+                    <div class="legenda">
+                        <span>0</span>
+                        <span>8</span>
+                        <span>16</span>
+                        <span>32</span>
+                        <span>56</span>
+                        <span>72</span>
+                        <span>96</span>
+                        <span>114</span>
+                        <span>129</span>
+                    </div>
+                </div>
+            </article>
+
+            <article id="clima-diario" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Clima Diário</h1>
+                    <img src="./resourcers/dashboard/nuvem.png" alt="Ícone do Clima Diário" class="dashboard-icon">
+                </div>
+                <div class="graph">
+
+                    <div class="info">
+                        <p class="title">06:00</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">20°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">09:00</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">23°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">12:00</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">24°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">15:00</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">29°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">18:00</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">22°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">21:00</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">21°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">00:00</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">18°C</p>
+                    </div>
+
+                </div>
+            </article>
+
+            <article id="article-umidade" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Úmidade</h1>
+                </div>
+                <div class="circle-graph">
+                    <div class="info">
+                        <div class="circle_box">
+                            <div>
+                                <svg>
+                                    <circle cx="100" cy="100" r="95" />
+                                    <circle cx="100" cy="100" r="95" />
+                                </svg>
+                                <span>58%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="docker-info" id="umidade-icon">
+                    <img src="./resourcers/dashboard/umidade.png" alt="Ícone de Umidade" class="dashboard-icon">
+                </div>
+            </article>
+
+            <article id="article-condensacao" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Condensação</h1>
+                </div>
+                <div class="circle-graph">
+                    <div class="info">
+                        <div class="circle_box">
+                            <div>
+                                <svg>
+                                    <circle cx="100" cy="100" r="95" />
+                                    <circle cx="100" cy="100" r="95" />
+                                </svg>
+                                <span>32%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="docker-info" id="condensacao-icon">
+                    <img src="./resourcers/dashboard/condensacao.png" alt="Ícone de Condensação" class="dashboard-icon">
+                </div>
+            </article>
+
+            <article id="article-msg" class="docker">
+                <div class="circle-graph">
+                    <div class="info">
+                        Dia: <span>Chuvisco Matinal, retorno de chuva pela noite</span>
+                    </div>
+                </div>
+            </article>
+
+            <article id="article-clima" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Clima</h1>
+                    <img src="./resourcers/dashboard/clima-quente.png" alt="Ícone do Clima" class="dashboard-icon">
+                </div>
+                <div class="graph">
+                    <span id="temperatura-atual"><img src="./resourcers/dashboard/temperatura-atual.png"
+                            alt="Ícone de Temperatura Atual" class="clima-icon">22°C</span>
+                    <div class="info">
+                        <span id="temperatura-maxima"><img src="./resourcers/dashboard/temperatura-alta.png"
+                                alt="Ícone de Temperatura Máxima" class="clima-icon">26°C</span>
+                        <span id="temperatura-minima"><img src="./resourcers/dashboard/temperatura-baixa.png"
+                                alt="Ícone de Temperatura Mínima" class="clima-icon">17°C</span>
+                    </div>
+                </div>
+            </article>
+
+            <article id="article-velocidade-vento" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Velocidade do Vento</h1>
+                </div>
+                <div class="graph">
+                    <div class="info">
+                        <p class="title">Sexta, 14</p>
+                        <div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <p class="title">85 km/h</p>
+                    </div>
+                </div>
+                <div class="docker-info">
+                    <img id="vento-icon" src="./resourcers/dashboard/vento.png" alt="Ícone do Vento"
+                        class="dashboard-icon">
+                </div>
+            </article>
+
+            <article id="article-ar" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Ar</h1>
+                    <img src="./resourcers/dashboard/ar.png" alt="Ícone do Ar" class="dashboard-icon">
+                </div>
+                <div class="circle-graph">
+                    <div class="info">
+                        <div class="circle_box">
+                            <div>
+                                <svg>
+                                    <circle cx="100" cy="100" r="95" />
+                                    <circle cx="100" cy="100" r="95" />
+                                </svg>
+                                <span>25%</span>
+                            </div>
+                        </div>
+                        <span>Dia: O ar está agradável hoje</span>
+                    </div>
+                </div>
+            </article>
+
+            <article id="article-clima-cidades" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Clima Diário</h1>
+                    <img src="./resourcers/dashboard/urbano.png" alt="Ícone de Cidades" class="dashboard-icon">
+                </div>
+                <div class="graph">
+
+                    <div class="info">
+                        <p class="title">Cúiaba</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">20°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">Minas Gerais</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">23°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">Rio de Janeiro</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">24°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">São Paulo</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">29°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">Salvador</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">22°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">Pernambuco</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">21°C</p>
+                    </div>
+
+                    <div class="info">
+                        <p class="title">Roraima</p>
+                        <div class="bar">
+                            <div class="bar-progress"></div>
+                        </div>
+                        <p class="title">18°C</p>
+                    </div>
+
+                </div>
+            </article>
+
+            <article id="article-precipitacao" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Precipitação</h1>
+                    <img id="vento-icon" src="./resourcers/dashboard/corrente-de-agua.png" alt="Ícone de Precipitação"
+                        class="dashboard-icon">
+                </div>
+                <div class="graph">
+                    <div class="info">
+                        <div>
+                            <canvas id="myChart-precipitacao"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article id="article-possibilidade" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Possibilidade</h1>
+                    <img src="./resourcers/dashboard/analise.png" alt="Ícone de estatísticas" class="dashboard-icon">
+                </div>
+                <div class="circle-graph">
+                    <div class="info">
+
+                        <div class="circle_box">
+                            <div>
+                                <svg>
+                                    <circle cx="100" cy="100" r="95" />
+                                    <circle cx="100" cy="100" r="95" />
+                                </svg>
+                                <span id="chuva-percent">82%</span>
+                            </div>
+                            <p>Chuva</p>
+                        </div>
+
+
+                        <div class="circle_box">
+                            <div>
+                                <svg>
+                                    <circle cx="100" cy="100" r="95" />
+                                    <circle cx="100" cy="100" r="95" />
+                                </svg>
+                                <span id="sol-percent">6%</span>
+                            </div>
+                            <p>Sol</p>
+                        </div>
+
+                        <div class="circle_box">
+                            <div>
+                                <svg>
+                                    <circle cx="100" cy="100" r="95" />
+                                    <circle cx="100" cy="100" r="95" />
+                                </svg>
+                                <span id="nuvem-percent">98%</span>
+                            </div>
+                            <p>Nuvem</p>
+                        </div>
+
+                    </div>
+                </div>
+            </article>
+
+            <article id="article-uv" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Raios UV</h1>
+                    <img src="./resourcers/dashboard/raios-solares.png" alt="Ícone de Raios UV" class="dashboard-icon">
+                </div>
+                <div class="circle-graph">
+                    <div class="info">
+                        <div class="circle_box">
+                            <div>
+                                <svg>
+                                    <circle cx="100" cy="100" r="95" />
+                                    <circle cx="100" cy="100" r="95" />
+                                </svg>
+                                <span>2</span>
+                            </div>
+                        </div>
+                        <span>Dia: Necessário usar protetor solar ao sair de casa</span>
+                    </div>
+                </div>
+            </article>
+
+            <article id="article-lua" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Lua</h1>
+                    <img src="./resourcers/dashboard/lua-minguante.png" alt="Ícone da Lua" class="dashboard-icon">
+                </div>
+                <div class="graph">
+                    <div class="info">
+                        <div class="fases-lua">
+                            <img src="./resourcers/dashboard/lua-minguante-1.png" alt="Ícone da Lua Minguante"
+                                class="lua-img">
+                            <img src="./resourcers/dashboard/meia-lua-minguante.png" alt="Ícone da Meia Lua Minguante"
+                                class="lua-img">
+                            <img src="./resourcers/dashboard/lua-nova.png" alt="Ícone da Lua Nova" class="lua-img">
+                            <img src="./resourcers/dashboard/lua-crescente.png" alt="Ícone da Lua Crescente"
+                                class="lua-img">
+                            <img src="./resourcers/dashboard/meia-lua-crescente.png" alt="Íconeda Meia Lua Crescente"
+                                class="lua-img">
+                            <img src="./resourcers/dashboard/lua-cheia.png" alt="Ícone da Lua Cheia" class="lua-img">
+                        </div>
+                        <span>Dia: Lua Cheia</span>
+                    </div>
+                </div>
+            </article>
+
+            <article id="article-sol" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Relógio Solar</h1>
+                    <img src="./resourcers/dashboard/relogio.png" alt="Ícone do Relógio Solar" class="dashboard-icon">
+                </div>
+                <div class="graph">
+                    <div class="info">
+                        <div class="fases-solar">
+                            <div class="bar-solar">
+                                <img src="./resourcers/dashboard/sol.png" alt="Ícone do Sol" class="solar-img">
+                                <img src="./resourcers/dashboard/lua-minguante.png" alt="Ícone da Lua"
+                                    class="lunar-img">
+                            </div>
+                        </div>
+                        <div class="legenda">
+                            <div class="sol-info">
+                                <span>Nascer do Sol: 04:48 AM</span>
+                                <span>Pôr do Sol: 17:18 PM</span>
+                            </div>
+                            <div class="lua-info">
+                                <span>Nascer da Lua: 17:48 PM</span>
+                                <span>Pôr da Lua: 04:38 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article id="article-direcao-vento" class="docker">
+                <div class="docker-info">
+                    <h1 class="title">Direção do vento</h1>
+                </div>
+                <div class="graph">
+                    <div class="info">
+                        <img src="./resourcers/dashboard/bussola-com-pontos-cardeais-para-orientacao-na-terra.png"
+                            alt="Ícone de Bússola">
+                        <div class="legenda">
+                            <span id="angulo">92°</span>
+                            <span> | </span>
+                            <span id="direcao">Sudoeste</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="docker-info">
+                    <img src="./resourcers/dashboard/vento.png" alt="Ícone do Vento" class="dashboard-icon">
+                </div>
+            </article>
+        </main>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

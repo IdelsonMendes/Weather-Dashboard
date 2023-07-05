@@ -1,0 +1,975 @@
+* {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    box-sizing: border-box;
+    color: var(--white);
+    font-size: 20px;
+}
+
+html {
+    display: block;
+}
+
+html,
+body {
+    --white: #fff;
+    --offwhite: #D9D9D9;
+    --orange: #E2A348;
+    /*background: linear-gradient(30deg, #4A5657, #58524A, #644F40);*/
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    background-position: center;
+    background-image: url('https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+header {
+    padding: 2rem;
+    width: auto;
+    height: auto;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    background: linear-gradient(30deg, #4A5657, #58524A, #644F40);
+}
+
+header .profile {
+    margin: 1rem auto;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header .profile .picture {
+    margin: 1.5rem auto;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+}
+
+header .nav {
+    margin: 0.7rem auto;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+header .nav ul {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header .nav ul li {
+    margin: 0.7rem auto;
+    width: 100%;
+    justify-content: left;
+}
+
+header .nav ul li>a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+header .nav ul li>a:hover {
+    color: var(--orange);
+    cursor: pointer;
+}
+
+header .nav ul li:nth-child(1) a {
+    color: var(--orange);
+}
+
+header .nav ul li img {
+    margin: auto 0.7rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.dashboard {
+    margin: auto 1rem;
+    flex-direction: column;
+}
+
+.dashboard .buttons {
+    margin: 0.7rem;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dashboard .buttons .btn {
+    padding: 0.5rem 1.5rem;
+    background: black;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 2.5rem;
+    color: var(--white);
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .buttons .btn-change-mode .btn:nth-child(1) {
+    background: var(--orange);
+}
+
+.dashboard .container {
+    margin: auto 0.7rem;
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "map-camadas map-camadas map-camadas map-camadas"
+        "map map map map"
+        "legenda-map legenda-map legenda-map legenda-map"
+        "clima-diario clima-diario clima-atual umidade "
+        "msg msg msg msg"
+        "ar ar condensacao condensacao"
+        "clima-cidades precipitacao precipitacao precipitacao"
+        "possibilidade possibilidade uv uv"
+        "lua lua lua lua"
+        "sol sol direcao-vento direcao-vento"
+        "velocidade-vento velocidade-vento velocidade-vento velocidade-vento";
+    color: var(--offwhite);
+}
+
+.dashboard .container .docker {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+    background: linear-gradient(30deg, #4A5657, #58524A, #644F40);
+    border-radius: 1.2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container .docker {
+    /*opacity: 0.8;*/
+    opacity: 1;
+}
+
+.dashboard .container .docker .docker-info {
+    margin: 0.5rem auto;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+.dashboard .container .docker .docker-info .title {
+    margin: auto 1rem;
+    font-size: 30pt;
+}
+
+
+.dashboard .container .docker .docker-info .dashboard-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+svg {
+    width: 10rem;
+    height: 10rem;
+    transform: rotate(-90deg);
+    overflow: initial;
+    justify-content: center;
+    align-items: center;
+}
+
+circle {
+    stroke-width: 1rem;
+    fill: none;
+}
+
+#map {
+    margin: 1rem auto;
+    width: 100%;
+    height: 30rem;
+    border-radius: 1rem;
+}
+
+/* === article-map-camadas=== */
+
+.dashboard .container #article-map-camadas {
+    grid-area: map-camadas;
+}
+
+.dashboard .container #article-map-camadas .docker-info {
+    margin: 0.5rem auto;
+    margin-bottom: 1rem;
+}
+
+.dashboard .container #article-map-camadas .circle-graph {
+    margin: auto 0.5rem;
+    width: 100%;
+}
+
+.dashboard .container #article-map-camadas .circle-graph .info {
+    margin: auto 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+.dashboard .container #article-map-camadas .circle-graph .info .btn-camada {
+    margin: auto 0.5rem;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    background-color: var(--offwhite);
+    border: none;
+    color: var(--white);
+}
+
+.dashboard .container #article-map-camadas .circle-graph .info .btn-camada:hover {
+    cursor: pointer;
+}
+
+
+/* === article-map=== */
+
+.dashboard .container #map {
+    grid-area: map;
+}
+
+/* === article-map-legenda === */
+
+.dashboard .container #article-map-legenda {
+    grid-area: legenda-map;
+}
+
+.dashboard .container #article-map-legenda .graph {
+    margin: 0.7rem auto;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dashboard .container #article-map-legenda .graph .info {
+    margin: auto 1.5rem;
+    flex-direction: row;
+    width: 90%;
+    height: 2.5rem;
+    justify-content: right;
+}
+
+.dashboard .container #article-map-legenda .graph .bar {
+    margin: auto 0.7rem;
+    width: 90%;
+    height: 1rem;
+    justify-content: left;
+    background-color: var(--offwhite);
+    border-radius: 0rem;
+    transform: rotate(0deg);
+}
+
+.dashboard .container #article-map-legenda .graph .bar .bar-progress {
+    width: 100%;
+    height: 1rem;
+    background: linear-gradient(30deg, #FDFAAA, #BEDD8C, #577CDB, #4B247B, #270648);
+    border-radius: 0rem;
+}
+
+.dashboard .container #article-map-legenda .legenda {
+    margin: 1rem auto;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+/* === article-clima-diario === */
+
+.dashboard .container #article-clima-diario {
+    grid-area: clima-diario;
+}
+
+.dashboard .container .docker .graph {
+    margin: 0.7rem auto;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container .docker .graph .info {
+    width: 5rem;
+    height: 13.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container .docker .graph .info .bar {
+    margin: auto -4rem;
+    width: 10rem;
+    height: 1rem;
+    justify-content: left;
+    background-color: var(--offwhite);
+    border-radius: 1.2rem;
+    transform: rotate(270deg);
+}
+
+.dashboard .container .docker .graph .info .bar .bar-progress {
+    width: 7.5rem;
+    height: 1rem;
+    background-color: var(--orange);
+    border-radius: 1.2rem;
+}
+
+
+/* === article-umidade === */
+
+.dashboard .container #article-umidade {
+    grid-area: umidade;
+}
+
+.dashboard .container #article-umidade .docker-info .title {
+    width: 100%;
+    justify-content: center;
+}
+
+.dashboard .container #article-umidade .circle-graph {
+    width: auto;
+    height: auto;
+}
+
+
+.dashboard .container #article-umidade .circle-graph .info .circle_box {
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+
+    width: auto;
+    height: auto;
+}
+
+.dashboard .container #article-umidade .circle-graph .info .circle_box div {
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+.dashboard .container #article-umidade .circle-graph .info .circle_box span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container #article-umidade .circle-graph .info .circle_box circle:nth-child(1) {
+    stroke: var(--offwhite);
+}
+
+.dashboard .container #article-umidade .circle-graph .info .circle_box circle:nth-child(2) {
+    stroke: var(--orange);
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard .container #article-umidade .circle-graph .info .circle_box:nth-child(1) circle:nth-child(2) {
+    stroke-dashoffset: calc(100 * 6);
+    stroke-dasharray: calc(100 * 6);
+    stroke-dashoffset: calc((100 * 6) - ((100 * 6) * 58) / 100);
+}
+
+
+
+
+.dashboard .container #article-umidade #umidade-icon {
+    justify-content: end;
+}
+
+.dashboard .container #article-condensacao #condensacao-icon {
+    justify-content: end;
+}
+
+/* === article-condensacao === */
+
+
+.dashboard .container #article-condensacao {
+    grid-area: condensacao;
+}
+
+.dashboard .container #article-condensacao .docker-info .title {
+    width: 100%;
+    justify-content: center;
+}
+
+.dashboard .container #article-condensacao .circle-graph {
+    width: auto;
+    height: auto;
+}
+
+.dashboard .container #article-condensacao .circle-graph .info .circle_box circle:nth-child(1) {
+    stroke: var(--offwhite);
+}
+
+.dashboard .container #article-condensacao .circle-graph .info .circle_box circle:nth-child(2) {
+    stroke: var(--orange);
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard .container #article-condensacao .circle-graph .info .circle_box:nth-child(1) circle:nth-child(2) {
+    stroke-dashoffset: calc(100 * 6);
+    stroke-dasharray: calc(100 * 6);
+    stroke-dashoffset: calc((100 * 6) - ((100 * 6) * 32) / 100);
+}
+
+.dashboard .container #article-condensacao .circle-graph .info .circle_box {
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+}
+
+.dashboard .container #article-condensacao .circle-graph .info .circle_box div {
+    position: relative;
+}
+
+.dashboard .container #article-condensacao .circle-graph .info .circle_box span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem;
+}
+
+/* === article-msg === */
+
+.dashboard .container #article-msg {
+    grid-area: msg;
+}
+
+.dashboard .container #article-msg .circle-graph .info span {
+    margin: auto 0.5rem;
+    color: var(--orange);
+}
+
+
+/* === article-clima-atual === */
+
+.dashboard .container #article-clima {
+    grid-area: clima-atual;
+}
+
+.dashboard .container #article-clima .graph {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dashboard .container #article-clima .graph #temperatura-atual {
+    margin: auto 0.7rem;
+    width: 100%;
+    font-size: 50pt;
+    color: var(--orange);
+    justify-content: center;
+}
+
+.dashboard .container #article-clima .graph #temperatura-atual img {
+    width: 3.7rem;
+    height: 3.7rem;
+}
+
+.dashboard .container #article-clima .graph .info {
+    margin: 1.5rem auto;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+}
+
+.dashboard .container #article-clima .graph .info span {
+    margin: auto 1rem;
+    font-size: 20pt;
+    color: var(--orange);
+}
+
+.dashboard .container #article-clima .graph .info span img {
+    margin: auto 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+/* === article-velocidade-vento === */
+
+.dashboard .container #article-velocidade-vento {
+    grid-area: velocidade-vento;
+}
+
+.dashboard .container #article-velocidade-vento .docker-info .title {
+    width: 100%;
+    justify-content: center;
+}
+
+
+.dashboard .container #article-velocidade-vento .docker-info {
+    margin: auto 0.5rem;
+    width: 100%;
+    color: var(--orange);
+    justify-content: end;
+}
+
+.dashboard .container #article-velocidade-vento .graph .info {
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
+
+.dashboard .container #article-velocidade-vento .graph .info .title {
+    margin: 0.5rem;
+    width: 100%;
+    justify-content: end;
+}
+
+.dashboard .container #article-velocidade-vento .graph .info .title:nth-child(3) {
+    width: 100%;
+    justify-content: start;
+}
+
+.dashboard .container #article-velocidade-vento .graph .info>div {
+    width: 90%;
+    height: 100%;
+}
+
+
+/* === article-Ar === =================================*/
+
+.dashboard .container #article-ar {
+    grid-area: ar;
+}
+
+.dashboard .container #article-ar .circle-graph .info .circle_box circle:nth-child(1) {
+    stroke: var(--offwhite);
+}
+
+.dashboard .container #article-ar .circle-graph .info .circle_box circle:nth-child(2) {
+    stroke: var(--orange);
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard .container #article-ar .circle-graph .info .circle_box:nth-child(1) circle:nth-child(2) {
+    stroke-dashoffset: calc(100 * 6);
+    stroke-dasharray: calc(100 * 6);
+    stroke-dashoffset: calc((100 * 6) - ((100 * 6) * 25) / 100);
+}
+
+.dashboard .container #article-ar .circle-graph .info .circle_box {
+    margin: 1.5rem auto;
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+}
+
+.dashboard .container #article-ar .circle-graph .info .circle_box div {
+    position: relative;
+}
+
+.dashboard .container #article-ar .circle-graph .info .circle_box span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem;
+}
+
+.dashboard .container #article-ar .circle-graph .info {
+    margin: auto 0.5rem;
+    flex-direction: column;
+}
+
+.dashboard .container #article-ar .circle-graph .info span {
+    margin: auto 0.5rem;
+    color: var(--orange);
+    flex-direction: row;
+}
+
+
+/* === article-clima-cidades === */
+
+.dashboard .container #article-clima-cidades {
+    grid-area: clima-cidades;
+}
+
+.dashboard .container #article-clima-cidades .graph {
+    margin: 0.7rem auto;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+}
+
+.dashboard .container #article-clima-cidades .graph .info {
+    margin: auto 1.5rem;
+    flex-direction: row;
+    width: 90%;
+    height: 2.5rem;
+    justify-content: right;
+}
+
+.dashboard .container #article-clima-cidades .graph .bar {
+    margin: auto;
+    margin: auto 0.7rem;
+    width: 20rem;
+    height: 1rem;
+    justify-content: left;
+    background-color: var(--offwhite);
+    border-radius: 0rem;
+    transform: rotate(0deg);
+}
+
+.dashboard .container #article-clima-cidades .graph .bar .bar-progress {
+    width: 7.5rem;
+    height: 1rem;
+    background-color: var(--orange);
+    border-radius: 0rem;
+}
+
+/* === article-precipitacao === */
+
+.dashboard .container #article-precipitacao {
+    grid-area: precipitacao;
+}
+
+.dashboard .container #article-precipitacao .graph .info {
+    width: 100%;
+    height: auto;
+}
+
+.dashboard .container #article-precipitacao .graph .info>div {
+    width: 100%;
+}
+
+
+/* === article-possibilidade === */
+
+.dashboard .container #article-possibilidade {
+    grid-area: possibilidade;
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info {
+    margin: auto 0.5rem;
+    flex-direction: row;
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box {
+    margin: 1rem;
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+    flex-direction: column;
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box p {
+    margin: 1rem auto;
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box circle:nth-child(1) {
+    stroke: var(--offwhite);
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box circle:nth-child(2) {
+    stroke: var(--orange);
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box:nth-child(1) circle:nth-child(2) {
+    stroke-dashoffset: calc(100 * 6);
+    stroke-dasharray: calc(100 * 6);
+    stroke-dashoffset: calc((100 * 6) - ((100 * 6) * 82) / 100);
+}
+
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box:nth-child(2) circle:nth-child(2) {
+    stroke-dashoffset: calc(100 * 6);
+    stroke-dasharray: calc(100 * 6);
+    stroke-dashoffset: calc((100 * 6) - ((100 * 6) * 6) / 100);
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box:nth-child(3) circle:nth-child(2) {
+    stroke-dashoffset: calc(100 * 6);
+    stroke-dasharray: calc(100 * 6);
+    stroke-dashoffset: calc((100 * 6) - ((100 * 6) * 98) / 100);
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box div {
+    position: relative;
+}
+
+.dashboard .container #article-possibilidade .circle-graph .info .circle_box span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem;
+}
+
+
+/* === article-uv === */
+
+.dashboard .container #article-uv {
+    grid-area: uv;
+}
+
+.dashboard .container #article-uv .circle-graph .info .circle_box circle:nth-child(1) {
+    stroke: var(--offwhite);
+}
+
+.dashboard .container #article-uv .circle-graph .info .circle_box circle:nth-child(2) {
+    stroke: var(--orange);
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard .container #article-uv .circle-graph .info .circle_box:nth-child(1) circle:nth-child(2) {
+    stroke-dashoffset: calc(100 * 6);
+    stroke-dasharray: calc(100 * 6);
+    stroke-dashoffset: calc((100 * 6) - ((100 * 6) * 32) / 100);
+}
+
+.dashboard .container #article-uv .circle-graph .info .circle_box {
+    margin: 1.5rem auto;
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+}
+
+.dashboard .container #article-uv .circle-graph .info .circle_box div {
+    position: relative;
+}
+
+.dashboard .container #article-uv .circle-graph .info .circle_box span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem;
+}
+
+.dashboard .container #article-uv .circle-graph .info {
+    margin: auto 0.5rem;
+    flex-direction: column;
+}
+
+.dashboard .container #article-uv .circle-graph .info span {
+    margin: auto 0.5rem;
+    color: var(--orange);
+    flex-direction: row;
+}
+
+
+/* === article-Lua === */
+
+
+.dashboard .container #article-lua {
+    grid-area: lua;
+}
+
+.dashboard .container #article-lua .graph {
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container #article-lua .graph .info {
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container #article-lua .graph .info .fases-lua {
+    margin: 0.7rem auto;
+    margin-bottom: 2.5rem;
+}
+
+.dashboard .container #article-lua .graph .info .fases-lua img {
+    margin: auto 1rem;
+    width: 7rem;
+    height: 7rem;
+}
+
+/* === article-Sol === */
+
+
+.dashboard .container #article-sol {
+    grid-area: sol;
+}
+
+.dashboard .container #article-sol .graph {
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container #article-sol .graph .info {
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dashboard .container #article-sol .graph .info .fases-solar {
+    margin: 0.7rem auto;
+    margin-bottom: 2.5rem;
+}
+
+.dashboard .container #article-sol .graph .info .fases-solar .bar-solar {
+    margin: 0;
+    padding: 0;
+    width: 20rem;
+    height: 0.5rem;
+    justify-content: space-between;
+    background: var(--offwhite);
+}
+
+.dashboard .container #article-sol .graph .info .fases-solar .bar-solar img {
+    margin: -1rem 0rem;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+
+.dashboard .container #article-sol .graph .info .legenda {
+    flex-direction: row;
+}
+
+.dashboard .container #article-sol .graph .info .legenda .sol-info {
+    margin: auto 1.5rem;
+    flex-direction: column;
+}
+
+
+.dashboard .container #article-sol .graph .info .legenda .lua-info {
+    margin: auto 1.5rem;
+    flex-direction: column;
+}
+
+/* === article-direcao-vento === */
+
+
+.dashboard .container #article-direcao-vento {
+    grid-area: direcao-vento;
+}
+
+.dashboard .container #article-direcao-vento .docker-info .title {
+    width: 100%;
+    justify-content: center;
+}
+
+.dashboard .container #article-direcao-vento .graph {
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container #article-direcao-vento .graph .info {
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.dashboard .container #article-direcao-vento .graph .info img {
+    width: 7.5rem;
+    height: 7.5rem;
+}
+
+
+.dashboard .container #article-direcao-vento .docker-info:nth-child(3) {
+    width: 100%;
+    justify-content: center;
+}
+
+
+.dashboard .container #article-direcao-vento .graph .info .legenda {
+    margin: 0.7rem auto;
+    flex-direction: row;
+}
+
+
+.dashboard .container #article-direcao-vento .graph .info .legenda span {
+    margin: auto 0.2rem;
+    flex-direction: row;
+}
+
+
+@media (max-width: 800px) {
+    .dashboard .container {
+        margin: auto 0.7rem;
+        width: auto;
+        height: auto;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "clima-diario umidade"
+            "map-camadas map-camadas"
+            "map map"
+            "legenda-map legenda-map"
+            "condensacao condensacao"
+            "msg msg"
+            "ar precipitacao"
+            "clima-cidades uv"
+            "possibilidade possibilidade"
+            "lua lua"
+            "sol direcao-vento"
+            "velocidade-vento velocidade-vento"
+    }
+
+
+}
+
+@media (max-width: 400px) {
+
+    .dashboard .container {
+        margin: auto 0.7rem;
+        width: auto;
+        height: auto;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "clima-diario umidade"
+            "map-camadas map-camadas"
+            "map map"
+            "legenda-map legenda-map"
+            "condensacao condensacao"
+            "msg msg"
+            "ar precipitacao"
+            "clima-cidades uv"
+            "possibilidade possibilidade"
+            "lua lua"
+            "sol direcao-vento"
+            "velocidade-vento velocidade-vento"
+    }
+
+
+
+}
