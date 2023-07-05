@@ -243,7 +243,7 @@ function changeDataField(data) {
             legenda[i].innerHTML = dataFieldValues[data]['km/h'][i]
         }
 
-    } else {
+    } else if (data == 'none') {
         btnDataFieldTemperature.style.backgroundColor = '#D9D9D9';
         btnDataFieldDewpoint.style.backgroundColor = '#D9D9D9';
         btnDataFieldHumidity.style.backgroundColor = '#D9D9D9';
