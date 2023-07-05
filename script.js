@@ -154,6 +154,7 @@ function changeDataField(data) {
     var btnDataFieldWindSpeed = document.getElementById('btn-camada-windSpeed')
     var btnDataFieldWindGust = document.getElementById('btn-camada-windGust')
     var btnDataFieldCloudCover = document.getElementById('btn-camada-cloudCover')
+    var btnDataFieldNone = document.getElementById('btn-camada-none')
     var barProgressLegendaMap = document.getElementById('bar-legend-map')
 
     if (data == 'temperature' || data == 'dewPoint') {
@@ -165,6 +166,7 @@ function changeDataField(data) {
             btnDataFieldWindSpeed.style.backgroundColor = '#D9D9D9';
             btnDataFieldWindGust.style.backgroundColor = '#D9D9D9';
             btnDataFieldCloudCover.style.backgroundColor = '#D9D9D9';
+            btnDataFieldNone.style.backgroundColor = '#D9D9D9';
             barProgressLegendaMap.style.background = "linear-gradient(30deg, #963FC4, #317FB2, #42C05A, #EB8813, #A61A05)"
         } else if (data == 'dewPoint') {
             btnDataFieldTemperature.style.backgroundColor = '#D9D9D9';
@@ -173,6 +175,7 @@ function changeDataField(data) {
             btnDataFieldWindSpeed.style.backgroundColor = '#D9D9D9';
             btnDataFieldWindGust.style.backgroundColor = '#D9D9D9';
             btnDataFieldCloudCover.style.backgroundColor = '#D9D9D9';
+            btnDataFieldNone.style.backgroundColor = '#D9D9D9';
             barProgressLegendaMap.style.background = "linear-gradient(30deg, #963FC4, #317FB2, #42C05A, #EB8813, #A61A05)"
         }
 
@@ -192,6 +195,7 @@ function changeDataField(data) {
             btnDataFieldWindSpeed.style.backgroundColor = '#D9D9D9';
             btnDataFieldWindGust.style.backgroundColor = '#D9D9D9';
             btnDataFieldCloudCover.style.backgroundColor = '#D9D9D9';
+            btnDataFieldNone.style.backgroundColor = '#D9D9D9';
             barProgressLegendaMap.style.background = 'linear-gradient(30deg, #FFF5C6, #FED88B, #BF9461, #7E4558, #51105F)';
         } else if (data == 'cloudCover') {
             btnDataFieldTemperature.style.backgroundColor = '#D9D9D9';
@@ -200,6 +204,7 @@ function changeDataField(data) {
             btnDataFieldWindSpeed.style.backgroundColor = '#D9D9D9';
             btnDataFieldWindGust.style.backgroundColor = '#D9D9D9';
             btnDataFieldCloudCover.style.backgroundColor = '#E2A348';
+            btnDataFieldNone.style.backgroundColor = '#D9D9D9';
             barProgressLegendaMap.style.background = 'linear-gradient(30deg, #D8E6F7, #BDD5EF, #639BDA, #3B71AD , #58636F)';
         }
 
@@ -219,6 +224,7 @@ function changeDataField(data) {
             btnDataFieldWindSpeed.style.backgroundColor = '#E2A348';
             btnDataFieldWindGust.style.backgroundColor = '#D9D9D9';
             btnDataFieldCloudCover.style.backgroundColor = '#D9D9D9';
+            btnDataFieldNone.style.backgroundColor = '#D9D9D9';
             barProgressLegendaMap.style.background = 'linear-gradient(30deg, #FDFAAA, #BEDD8C, #577CDB, #4B247B, #270648)';
         } else if (data == 'windGust') {
             btnDataFieldTemperature.style.backgroundColor = '#D9D9D9';
@@ -227,6 +233,7 @@ function changeDataField(data) {
             btnDataFieldWindSpeed.style.backgroundColor = '#D9D9D9';
             btnDataFieldWindGust.style.backgroundColor = '#E2A348';
             btnDataFieldCloudCover.style.backgroundColor = '#D9D9D9';
+            btnDataFieldNone.style.backgroundColor = '#D9D9D9';
             barProgressLegendaMap.style.background = 'linear-gradient(30deg, #FDFAAA, #BEDD8C, #577CDB, #4B247B, #270648)';
         }
         titleCamada.innerHTML = data;
@@ -237,13 +244,12 @@ function changeDataField(data) {
         }
 
     } else {
-
-        btnDataFieldTemperature.style.backgroundColor = '#E2A348';
-        titleCamada.innerHTML = 'temperature';
-        unitCamada.innerHTML = '°C';
-
+        btnDataFieldNone.style.backgroundColor = '#E2A348';
+        titleCamada.innerHTML = 'Sem filtro';
+        unitCamada.innerHTML = '';
+        barProgressLegendaMap.style.background = 'transparent';
         for (var i = 0; i < legenda.length; i++) {
-            legenda[i].innerHTML = dataFieldValues['temperature']['Celcius'][i]
+            legenda[i].innerHTML = ''
         }
 
     }
