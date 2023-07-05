@@ -261,7 +261,7 @@ function changeDataField(data) {
                 legenda[i].innerHTML = ''
             }
         }
-        changeDataField('temperature');
+      
     }
 }
 
